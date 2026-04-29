@@ -1,261 +1,244 @@
-export default function AlgoBetaLandingPage() {
-  const benefits = [
-    {
-      title: "Get instant answers",
-      text: "Ask product and workflow questions in natural language and get fast, relevant guidance.",
-      icon: "💬",
-    },
-    {
-      title: "Simplify complex tasks",
-      text: "Get step-by-step help for configurations, troubleshooting, and best practices.",
-      icon: "🧭",
-    },
-    {
-      title: "Boost productivity",
-      text: "Reduce time spent searching documentation and move faster with the right information.",
-      icon: "⚡",
-    },
-    {
-      title: "Stay secure",
-      text: "Built on trusted AlgoSec knowledge to support secure, compliant decisions.",
-      icon: "🛡️",
-    },
-  ];
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Algo Beta Program</title>
+  <style>
+    :root {
+      --navy: #152e53;
+      --blue: #0070c1;
+      --deep-blue: #00528b;
+      --sky: #44ade2;
+      --green: #a6ce39;
+      --gray-900: #1f2937;
+      --gray-700: #4b5563;
+      --gray-500: #6b7280;
+      --gray-300: #d1d5db;
+      --gray-200: #e5e7eb;
+      --gray-100: #f3f4f6;
+      --white: #ffffff;
+      --shadow: 0 20px 50px rgba(21, 46, 83, 0.12);
+      --radius-xl: 28px;
+      --radius-2xl: 32px;
+      --max-width: 1180px;
+    }
 
-  const betaPoints = [
-    "Early access to Algo before general availability",
-    "Direct channel to share feedback with the product team",
-    "Influence roadmap priorities and key beta improvements",
-    "Priority onboarding for selected participants",
-  ];
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--gray-900);
+      background: var(--white);
+      line-height: 1.5;
+    }
 
-  return (
-    <div className="min-h-screen bg-white text-slate-900">
-      <section className="relative overflow-hidden bg-white">
-        <div className="absolute -top-28 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full bg-sky-400/90 blur-0" />
-        <div className="absolute -right-24 top-10 h-96 w-96 rounded-full bg-lime-400/90" />
-        <div className="absolute -left-40 bottom-0 h-80 w-[55%] rounded-tr-[220px] bg-[#00528b]" />
+    a { text-decoration: none; }
+    .container {
+      width: min(var(--max-width), calc(100% - 48px));
+      margin: 0 auto;
+    }
 
-        <div className="relative mx-auto grid max-w-7xl gap-10 px-6 py-16 lg:grid-cols-2 lg:px-10 lg:py-24">
-          <div className="z-10 flex flex-col justify-center">
-            <div className="mb-6 flex items-center gap-3">
-              <div className="flex h-11 w-11 items-center justify-center rounded-full bg-sky-500 text-xl font-bold text-white">
-                A
-              </div>
-              <div className="text-3xl font-light tracking-tight text-slate-700">
-                <span className="font-normal text-slate-600">algo</span>
-                <span className="text-sky-500">sec</span>
-              </div>
-            </div>
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background: var(--white);
+      padding: 72px 0 64px;
+    }
+    .hero-shape-top {
+      position: absolute;
+      top: -110px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background: var(--sky);
+      opacity: 0.9;
+    }
+    .hero-shape-right {
+      position: absolute;
+      top: 24px;
+      right: -120px;
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      background: var(--green);
+      opacity: 0.9;
+    }
+    .hero-shape-left {
+      position: absolute;
+      bottom: 0;
+      left: -120px;
+      width: 48%;
+      height: 300px;
+      border-top-right-radius: 220px;
+      background: var(--deep-blue);
+    }
 
-            <div className="mb-4 inline-flex w-fit rounded-full border border-sky-200 bg-sky-50 px-4 py-2 text-sm font-medium text-sky-700">
-              Beta Program
-            </div>
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 48px;
+      align-items: center;
+    }
 
-            <h1 className="max-w-xl text-5xl font-bold leading-tight text-[#152e53] lg:text-7xl">
-              Meet <span className="text-sky-500">Algo</span>
-            </h1>
+    .brand-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .brand-mark {
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      background: var(--blue);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 20px;
+    }
+    .brand-name {
+      font-size: 34px;
+      letter-spacing: -0.02em;
+      color: var(--gray-700);
+    }
+    .brand-name .sec { color: var(--blue); }
 
-            <div className="mt-4 flex items-start gap-4">
-              <div className="mt-2 h-14 w-px bg-lime-400" />
-              <p className="max-w-lg text-2xl leading-snug text-[#152e53] lg:text-3xl">
-                Your AI assistant for faster, smarter security workflows.
-              </p>
-            </div>
+    .pill {
+      display: inline-block;
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid #cfe8f7;
+      background: #eef8fe;
+      color: var(--blue);
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
 
-            <p className="mt-8 max-w-xl text-lg leading-8 text-slate-700">
-              Join the Algo beta program and help shape AlgoSec’s new chat experience.
-              Get early access, try new capabilities first, and give direct feedback to the team building it.
-            </p>
+    h1 {
+      margin: 0;
+      font-size: 72px;
+      line-height: 0.98;
+      color: var(--navy);
+      letter-spacing: -0.04em;
+    }
+    h1 .highlight { color: var(--blue); }
 
-            <p className="mt-6 text-2xl font-semibold text-[#0070C1]">
-              Secure application connectivity. <span className="text-[#a6ce39]">Anywhere.</span>
-            </p>
+    .subhero {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .subhero-line {
+      width: 2px;
+      height: 58px;
+      background: var(--green);
+      margin-top: 4px;
+      flex: 0 0 auto;
+    }
+    .subhero p {
+      margin: 0;
+      font-size: 34px;
+      line-height: 1.12;
+      color: var(--navy);
+      max-width: 560px;
+    }
 
-            <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-              <a
-                href="#enroll"
-                className="rounded-2xl bg-[#0070C1] px-7 py-4 text-center text-base font-semibold text-white shadow-lg shadow-sky-200 transition hover:-translate-y-0.5"
-              >
-                Enroll in the beta
-              </a>
-              <a
-                href="#benefits"
-                className="rounded-2xl border border-slate-300 px-7 py-4 text-center text-base font-semibold text-[#152e53] transition hover:bg-slate-50"
-              >
-                See program benefits
-              </a>
-            </div>
-          </div>
+    .hero-copy {
+      margin-top: 28px;
+      max-width: 580px;
+      font-size: 20px;
+      line-height: 1.7;
+      color: var(--gray-700);
+    }
+    .tagline {
+      margin-top: 24px;
+      font-size: 30px;
+      font-weight: 700;
+      color: var(--blue);
+    }
+    .tagline span { color: var(--green); }
 
-          <div className="relative z-10 flex items-center justify-center lg:justify-end">
-            <div className="relative w-full max-w-xl">
-              <div className="absolute -top-8 right-10 h-24 w-24 rounded-full bg-sky-100" />
-              <div className="rounded-[32px] border border-slate-200 bg-white p-4 shadow-2xl shadow-slate-200">
-                <div className="rounded-[28px] border border-slate-200 bg-slate-50 p-4">
-                  <div className="mb-4 flex items-center gap-3 border-b border-slate-200 pb-4">
-                    <div className="flex h-11 w-11 items-center justify-center rounded-full bg-sky-500 text-xl font-bold text-white">
-                      A
-                    </div>
-                    <div>
-                      <div className="text-xl font-semibold text-[#152e53]">Algo</div>
-                      <div className="text-sm text-slate-500">Online</div>
-                    </div>
-                  </div>
+    .cta-row {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 34px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 16px 28px;
+      border-radius: 18px;
+      font-weight: 700;
+      font-size: 16px;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      background: var(--blue);
+      color: var(--white);
+      box-shadow: 0 16px 30px rgba(0, 112, 193, 0.18);
+    }
+    .btn-secondary {
+      border: 1px solid var(--gray-300);
+      color: var(--navy);
+      background: var(--white);
+    }
 
-                  <div className="space-y-4 text-[15px] leading-6">
-                    <div className="ml-auto max-w-[78%] rounded-2xl rounded-tr-md bg-sky-100 px-4 py-3 text-[#152e53]">
-                      What can I do with Algo in the beta?
-                    </div>
-                    <div className="max-w-[82%] rounded-2xl rounded-tl-md border border-slate-200 bg-white px-4 py-3 text-slate-700">
-                      You can ask product questions, get guided answers, simplify complex tasks, and help improve the experience with direct feedback.
-                    </div>
-                    <div className="ml-auto max-w-[78%] rounded-2xl rounded-tr-md bg-sky-100 px-4 py-3 text-[#152e53]">
-                      Why should I join early?
-                    </div>
-                    <div className="max-w-[82%] rounded-2xl rounded-tl-md border border-slate-200 bg-white px-4 py-3 text-slate-700">
-                      Beta participants get early access, direct input into the roadmap, and a chance to shape how Algo evolves before launch.
-                    </div>
-                  </div>
-
-                  <div className="mt-5 rounded-2xl border border-slate-200 bg-white px-4 py-3 text-slate-400">
-                    Ask Algo...
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="benefits" className="bg-[#00528b] text-white">
-        <div className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-20">
-          <div className="max-w-2xl">
-            <h2 className="text-3xl font-bold lg:text-5xl">
-              What can <span className="text-[#a6ce39]">Algo</span> do?
-            </h2>
-            <p className="mt-4 text-lg text-sky-100">
-              Designed to make everyday work easier, faster, and more confident for AlgoSec users.
-            </p>
-          </div>
-
-          <div className="mt-12 grid gap-6 md:grid-cols-2">
-            {benefits.map((item) => (
-              <div
-                key={item.title}
-                className="rounded-[28px] border border-white/15 bg-white/5 p-6 backdrop-blur-sm"
-              >
-                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl border border-sky-300/40 bg-white/10 text-2xl">
-                  {item.icon}
-                </div>
-                <h3 className="text-2xl font-semibold text-[#a6ce39]">{item.title}</h3>
-                <p className="mt-3 text-base leading-7 text-sky-50">{item.text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-white">
-        <div className="mx-auto grid max-w-7xl gap-10 px-6 py-16 lg:grid-cols-[1.1fr_0.9fr] lg:px-10 lg:py-20">
-          <div>
-            <h2 className="text-3xl font-bold text-[#152e53] lg:text-5xl">Why join the beta?</h2>
-            <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-700">
-              This program is for teams that want to explore Algo early, influence the experience,
-              and help define what great AI assistance should look like in the AlgoSec platform.
-            </p>
-
-            <div className="mt-10 grid gap-4">
-              {betaPoints.map((point) => (
-                <div key={point} className="flex items-start gap-4 rounded-2xl border border-slate-200 p-5">
-                  <div className="mt-1 flex h-7 w-7 items-center justify-center rounded-full bg-lime-100 text-sm font-bold text-lime-700">
-                    ✓
-                  </div>
-                  <p className="text-base leading-7 text-slate-700">{point}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div id="enroll" className="rounded-[32px] border border-slate-200 bg-slate-50 p-8 shadow-xl shadow-slate-200">
-            <div className="mb-6 inline-flex rounded-full bg-lime-100 px-4 py-2 text-sm font-semibold text-lime-700">
-              Limited beta spots
-            </div>
-            <h3 className="text-3xl font-bold text-[#152e53]">Apply to join</h3>
-            <p className="mt-3 text-base leading-7 text-slate-600">
-              Tell us a bit about your team and we’ll follow up with next steps.
-            </p>
-
-            <form className="mt-8 space-y-4">
-              <div>
-                <label className="mb-2 block text-sm font-medium text-slate-700">Work email</label>
-                <input
-                  type="email"
-                  placeholder="name@company.com"
-                  className="w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 outline-none ring-0 transition focus:border-sky-500"
-                />
-              </div>
-              <div>
-                <label className="mb-2 block text-sm font-medium text-slate-700">Company</label>
-                <input
-                  type="text"
-                  placeholder="Your company"
-                  className="w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 outline-none ring-0 transition focus:border-sky-500"
-                />
-              </div>
-              <div>
-                <label className="mb-2 block text-sm font-medium text-slate-700">Role</label>
-                <input
-                  type="text"
-                  placeholder="Your role"
-                  className="w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 outline-none ring-0 transition focus:border-sky-500"
-                />
-              </div>
-              <div>
-                <label className="mb-2 block text-sm font-medium text-slate-700">What do you want to use Algo for?</label>
-                <textarea
-                  rows={4}
-                  placeholder="Share your goals, workflows, or questions you’d like Algo to help with"
-                  className="w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 outline-none ring-0 transition focus:border-sky-500"
-                />
-              </div>
-
-              <button
-                type="button"
-                className="w-full rounded-2xl bg-[#0070C1] px-6 py-4 text-base font-semibold text-white shadow-lg shadow-sky-200 transition hover:-translate-y-0.5"
-              >
-                Request beta access
-              </button>
-
-              <p className="text-sm leading-6 text-slate-500">
-                By submitting, you agree to be contacted about the Algo beta program.
-              </p>
-            </form>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-white pb-16 lg:pb-20">
-        <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          <div className="rounded-[32px] bg-[#152e53] px-8 py-10 text-white lg:flex lg:items-center lg:justify-between lg:px-10">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-200">Algo beta</p>
-              <h2 className="mt-3 text-3xl font-bold lg:text-4xl">
-                Be among the first to shape <span className="text-[#a6ce39]">Algo</span>
-              </h2>
-              <p className="mt-4 max-w-2xl text-base leading-7 text-slate-200">
-                Early access. Direct influence. Smarter workflows.
-              </p>
-            </div>
-            <a
-              href="#enroll"
-              className="mt-6 inline-flex rounded-2xl bg-[#a6ce39] px-7 py-4 text-base font-semibold text-[#152e53] transition hover:-translate-y-0.5 lg:mt-0"
-            >
-              Join the beta program
-            </a>
-          </div>
-        </div>
-      </section>
-    </div>
-  );
-}
+    .chat-card-wrap { position: relative; }
+    .chat-dot {
+      position: absolute;
+      top: -26px;
+      right: 52px;
+      width: 96px;
+      height: 96px;
+      background: #e8f6fd;
+      border-radius: 50%;
+    }
+    .chat-card {
+      position: relative;
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-2xl);
+      padding: 16px;
+      box-shadow: var(--shadow);
+    }
+    .chat-inner {
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-xl);
+      background: #f8fafc;
+      padding: 18px;
+    }
+    .chat-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-bottom: 16px;
+      margin-bottom: 16px;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .chat-status {
+      color: var(--gray-500);
+      font-size: 14px;
+    }
+    .bubble-row { margin-bottom: 14px; }
+    .bubble {
+      max-width: 82%;
+      padding: 14px 16px;
+      border-radius: 18px;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    .bubble.user {
+      background: #dff2fd;
+      color: var(--navy);
+      margin-left: auto;
